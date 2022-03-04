@@ -41,6 +41,7 @@ def split_dataframe(df, chunk_size = 5000):
 
 def process_csv(csv,didx,words_dir):
     df=pd.read_csv(csv)
+    df=reset(df)
     df["words"]=df.text.progress_apply(lambda x:get_words(x))
     df=reset(df)
     chunks=split_dataframe(df)
