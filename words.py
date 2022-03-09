@@ -21,12 +21,13 @@ from languages import languages
 #---------------------------
 
 def get_words(text,pattern):
+    text=str(text)
     if text.strip():
         words=re.findall(pattern, text)
         return Counter(words)
     else:
         return None
-
+    
 def cvtCounter(counter):
     df = pd.DataFrame.from_dict(counter, orient='index').reset_index()
     df = df.rename(columns={'index':'word', 0:'count'})
